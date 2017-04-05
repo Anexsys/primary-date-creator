@@ -1,0 +1,41 @@
+<script>
+	<name>Primary date creator</name>
+	<description>Based on 4 dates, create a primary date</description>
+	<category>Data Manipulation</category>
+	<input orientation="horizontal">
+		<search id="search" name="Saved search to run across" />
+		<field id="f1" name="Field 1">
+			<filters>
+				<type>2</type>
+			</filters>
+		</field>
+		<field id="f2" name="Field 2">
+			<filters>
+				<type>2</type>
+			</filters>
+		</field>
+		<field id="f3" name="Field 3">
+			<filters>
+				<type>2</type>
+			</filters>
+		</field>
+		<field id="f4" name="Field 4">
+			<filters>
+				<type>2</type>
+			</filters>
+		</field>
+		<field id="fupdate" name="Field to update">
+			<filters>
+				<type>2</type>
+			</filters>
+		</field>
+	</input>
+	<display type="itemlist" />
+	<action timeout="3600" returns="table"><![CDATA[
+	
+	update EDDSDBO.Document
+	SET #fupdate# = COALESCE(#f1#, #f2#, #f3#, #f4#)
+	#search#
+
+	]]></action>
+</script>
